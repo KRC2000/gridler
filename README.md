@@ -6,7 +6,7 @@ This lib was created as a part of implementation of a minecraft clone.
 
 ## Demo
 
-// TODO: Video demo goes here
+https://github.com/user-attachments/assets/da3bca64-58a0-41f2-a423-df08bf28ea98
 
 ## Features
 
