@@ -1,8 +1,7 @@
 #include <cglm/cglm.h>
-#include <stdio.h>
 
 #include "raylib.h"
-#include "rayvoxels.h"
+#include "gridler.h"
 
 int main() {
 	uint screenW = 800;
@@ -16,7 +15,7 @@ int main() {
 
 	size_t intersectedCount = 0;
 	float** intersected =
-		getLineIntersectedVoxels(size, rayStart, rayEnd, &intersectedCount);
+		GetLineIntersectedVoxels2D(size, rayStart, rayEnd, &intersectedCount);
 
 	while (!WindowShouldClose()) {
 		float tileSize = glm_min(screenW, screenH) / size;
@@ -30,8 +29,8 @@ int main() {
 			glm_vec2_copy((vec2){GetMousePosition().x / ratio,
 								 GetMousePosition().y / ratio},
 						  rayStart);
-			intersected = getLineIntersectedVoxels(size, rayStart, rayEnd,
-												   &intersectedCount);
+			intersected = GetLineIntersectedVoxels2D(size, rayStart, rayEnd,
+													 &intersectedCount);
 		}
 		if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
 			for (size_t i = 0; i < intersectedCount; ++i)
@@ -41,8 +40,8 @@ int main() {
 			glm_vec2_copy((vec2){GetMousePosition().x / ratio,
 								 GetMousePosition().y / ratio},
 						  rayEnd);
-			intersected = getLineIntersectedVoxels(size, rayStart, rayEnd,
-												   &intersectedCount);
+			intersected = GetLineIntersectedVoxels2D(size, rayStart, rayEnd,
+													 &intersectedCount);
 		}
 
 		BeginDrawing();
